@@ -1,4 +1,4 @@
-FROM adhoc/odoo-adhoc:9.0.x
+FROM adhoc/odoo-adhoc:8.0.x
 MAINTAINER Juan Jose Scarafia <jjs@adhoc.com.ar>
 
 USER root
