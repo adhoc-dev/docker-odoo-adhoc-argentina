@@ -3,7 +3,10 @@ MAINTAINER Juan Jose Scarafia <jjs@adhoc.com.ar>
 
 USER root
 
+# predefined parameters vals
 ENV CUSTOM_ADDONS /mnt/extra-addons
+ENV ADMIN_PASS admin
+ENV SERVER_WIDE_MODULES web
 
 COPY ./resources/openerp-server.conf /etc/odoo/
 RUN chown odoo /etc/odoo/openerp-server.conf
@@ -16,7 +19,6 @@ RUN mkdir -m a+rw -p ${EXTRA_ADDONS}
 
 # Get repositories & add files
 WORKDIR ${SOURCES_DIR}
-ADD resources/config_odoo.py ./
 ADD resources/get_addons.py ./
 ADD resources/sources.txt ./
 RUN python get_addons.py ${EXTRA_ADDONS} --depth=1 --sources_file=sources.txt
